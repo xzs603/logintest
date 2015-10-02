@@ -52,3 +52,12 @@ if($('.room-available').length>0){
 	//	r.innerHTML=r.innerHTML+'<br/>'+document.title;
 alert(document.URL);
 }
+
+$.ajax({
+   type: "POST",
+   url: "http://gzfa.xdz.com.cn/ModuleBook/PersonSelectRoom/Index?CommunityID=e46fe9e8-bd85-4b87-b68d-a3c501146273&BuildingID=a14b374b-bb3b-4b78-b574-a3c600a44858&RoomTypeID=9e6fed87-a185-4040-b4ff-a3c600a41758",
+   beforeSend: function( xhr ) { xhr.setRequestHeader('X-Requested-With', {toString: function(){ return ''; }}); }, 
+   dataTyp: "html",
+   processData: false,
+   success: function(data){alert(data);}
+ });
