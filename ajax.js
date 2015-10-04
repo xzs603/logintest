@@ -1,12 +1,8 @@
-function init(){
-  $('form').first().hide()
-  var rstContent=document.createElement('div');
-  rstContent.setAttribute('id', 'rstContent');
-  document.body.appendChild(rstContent);
-}
-init();
+// init UI
+$('form').first().hide();
+$('body').append('<div id="rstContent"></div>')
 
-//var url="http://gzfa.xdz.com.cn/ModuleBook/PersonSelectRoom/Index?CommunityID=e46fe9e8-bd85-4b87-b68d-a3c501146273&BuildingID=a14b374b-bb3b-4b78-b574-a3c600a44858&RoomTypeID=9e6fed87-a185-4040-b4ff-a3c600a41758"
+// "http://gzfa.xdz.com.cn/ModuleBook/PersonSelectRoom/Index?CommunityID=e46fe9e8-bd85-4b87-b68d-a3c501146273&BuildingID=a14b374b-bb3b-4b78-b574-a3c600a44858&RoomTypeID=9e6fed87-a185-4040-b4ff-a3c600a41758"
 function dispRst(data,roomNo){
 	$(data).find('.room-available').each(function(){
 		var info=$(this).attr('room-no') + ' ' + $(this).attr('houseorientation');
@@ -50,5 +46,5 @@ function doQuery(){
 	for(var i in urls)
 		req(domainURL+urls[i],i);
 }
-
+// set up the timer
 window.setInterval("doQuery()", 60000);
