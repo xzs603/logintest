@@ -46,8 +46,9 @@ function conQueryStr(){
 }
 var urls=conQueryStr();
 function doQuery(){
+	$('#rstContent').append('request at ' + Date() + '<br/>');
 	for(var i in urls)
 		req(domainURL+urls[i],i);
 }
 
-window.setInterval("doQuery", 120000);
+window.setInterval("doQuery()", 60000);
