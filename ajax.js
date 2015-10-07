@@ -47,4 +47,4 @@ function doQuery(){
 		req(domainURL+urls[i],i);
 }
 // set up the timer
-window.setInterval("doQuery()", 60000);
+doQuery();window.setInterval("doQuery()", 60000);
