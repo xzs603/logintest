@@ -6,7 +6,7 @@ $('body').append('<div id="rstContent"></div>')
 function dispRst(data,roomNo){
 	$(data).find('.room-available').each(function(){
 		var info=$(this).attr('room-no') + ' ' + $(this).attr('houseorientation');
-		$('#rstContent').append(rNames[roomNo]+' '+info+' '+Date()+' </br>');
+		$('#rstContent').append('<div style="color:#0f0">'+rNames[roomNo]+' '+info+' '+Date()+' </div>');
 	});
 }
 function req(url,roomNo){
@@ -20,7 +20,7 @@ function req(url,roomNo){
 }
 
 var domainURL="http://gzfa.xdz.com.cn/ModuleBook/PersonSelectRoom/Index?CommunityID=e46fe9e8-bd85-4b87-b68d-a3c501146273";
-var rNames=[],i=0;$('#RoomTypeID option').each(function(){rNames[i++]=this.text});
+var rNames=[],i=-1;$('#RoomTypeID option').each(function(){rNames[i++]=this.text});
 function conQueryStr(){
 	var bIDs=[],i=0;$('#BuildingID option').each(function(){bIDs[i++]=this.value});
 	var rIDs=[],i=0;$('#RoomTypeID option').each(function(){rIDs[i++]=this.value});
