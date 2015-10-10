@@ -6,7 +6,7 @@ $('body').append('<div id="rstContent"></div>')
 function dispRst(data,roomNo){
 	$(data).find('.room-available').each(function(){
 		var info=$(this).attr('room-no') + ' ' + $(this).attr('houseorientation');
-		$('#rstContent').append('<div style="color:#0f0">'+rNames[roomNo]+' '+info+' '+Date()+' </div>');
+		$('#rstContent').append('<div style="color:#a00">'+rNames[roomNo]+' '+info+' '+Date()+' </div>');
 	});
 }
 function req(url,roomNo){
