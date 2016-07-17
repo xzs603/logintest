@@ -31,11 +31,11 @@ function ajaxSubmit(){
 		url:url,
 		data:data,
 		success:function(rsp){
-			var msg = $(rsp).find('h1').first().html();ChangeCodeImg()
+			var msg = $(rsp).find('h1').first().html();//ChangeCodeImg()
 			if(console) console.info(msg);
 		},
 		error: function(http) {
-			var msg = $(http.responseText).find('h1').first().html();ChangeCodeImg()
+			var msg = $(http.responseText).find('h1').first().html();//ChangeCodeImg()
 			if(console) console.warn(msg);
 	  	}
 	});
