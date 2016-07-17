@@ -24,7 +24,7 @@ function ajaxSubmit(){
 	var txtsfzh=$('form [name=txtsfzh]').val();
 	var txtSafetyCode=$('form [name=txtSafetyCode]').val();
 	var data={
-		"GetUsers[]":17,
+		"GetUsers[]":$("input:checked").val(),
 		url:url,txtusrName:txtusrName,txtTel:txtTel,txtsfzh:txtsfzh,txtSafetyCode:txtSafetyCode,btnSubmit:'提 交 选 票'
 	};
 	$.post({
