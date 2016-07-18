@@ -24,19 +24,19 @@ function ajaxSubmit(){
 	var txtsfzh=$('form [name=txtsfzh]').val();
 	var txtSafetyCode=$('form [name=txtSafetyCode]').val();
 	var data={
-		"GetUsers[]":17,
+		"GetUsers[]":$("input:checked").val(),
 		url:url,txtusrName:txtusrName,txtTel:txtTel,txtsfzh:txtsfzh,txtSafetyCode:txtSafetyCode,btnSubmit:'提 交 选 票'
 	};
 	$.post({
 		url:url,
 		data:data,
 		success:function(rsp){
-			var msg = $(rsp).find('h1').first().html();//ChangeCodeImg()
+			var msg = $(rsp).find('h1').first().html();ChangeCodeImg()
 			$('#txtTel').val(genPhoneNum());
 			if(console) console.info(msg);
 		},
 		error: function(http) {
-			var msg = $(http.responseText).find('h1').first().html();//ChangeCodeImg()
+			var msg = $(http.responseText).find('h1').first().html();ChangeCodeImg()
 			$('#txtTel').val(genPhoneNum());
 			if(console) console.warn(msg);
 	  	}
@@ -60,11 +60,12 @@ function genPhoneNum(){
  */
 function bind(){
 	ChangeCodeImg();
+	// 屏蔽onfocus事件
+	$('#txtSafetyCode').attr('onfocus','');
 	$('#txtTel').val(genPhoneNum());
 	$("form").on("submit", function(e) {
   		e.preventDefault();
-  		try{ajaxSubmit();}catch(e){}
-  		//alert(123);
+  		ajaxSubmit();
 	});
 }
 // 绑定时间，2秒为等待jquery载入的时间
