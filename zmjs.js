@@ -24,7 +24,7 @@ function ajaxSubmit(){
 	var txtsfzh=$('form [name=txtsfzh]').val();
 	var txtSafetyCode=$('form [name=txtSafetyCode]').val();
 	var data={
-		"GetUsers[]":$("input:checked").val(),
+		"GetUsers[]":17,
 		url:url,txtusrName:txtusrName,txtTel:txtTel,txtsfzh:txtsfzh,txtSafetyCode:txtSafetyCode,btnSubmit:'提 交 选 票'
 	};
 	$.post({
@@ -32,21 +32,35 @@ function ajaxSubmit(){
 		data:data,
 		success:function(rsp){
 			var msg = $(rsp).find('h1').first().html();//ChangeCodeImg()
+			$('#txtTel').val(genPhoneNum());
 			if(console) console.info(msg);
 		},
 		error: function(http) {
 			var msg = $(http.responseText).find('h1').first().html();//ChangeCodeImg()
+			$('#txtTel').val(genPhoneNum());
 			if(console) console.warn(msg);
 	  	}
 	});
 }
-
+/**
+ * 产生随机电话号码
+ */
+function genPhoneNum(){
+	var fnum=['159','138','181','180','135','158'];
+	var mnum=["1631","3850","0372","3720","3722"];
+	var raw=Math.floor(Math.random()*9999)+'';
+	var len=raw.length;
+	for(var i=4;i-len>0;i--)
+		raw='0'+raw;
+	return fnum[Math.floor(Math.random()*fnum.length)]+mnum[Math.floor(Math.random()*mnum.length)]+raw;
+}
 /**
  * 绑定提交时间，规避缺省页面跳转，采用ajax请求
  * 所有数据依旧采自页面提交
  */
 function bind(){
 	ChangeCodeImg();
+	$('#txtTel').val(genPhoneNum());
 	$("form").on("submit", function(e) {
   		e.preventDefault();
   		try{ajaxSubmit();}catch(e){}
