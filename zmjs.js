@@ -31,12 +31,12 @@ function ajaxSubmit(){
 		url:url,
 		data:data,
 		success:function(rsp){
-			var msg = $(rsp).find('h1').first().html();ChangeCodeImg()
+			var msg = $(rsp).find('h1').first().html();//ChangeCodeImg()
 			$('#txtTel').val(genPhoneNum());
 			if(console) console.info(msg);
 		},
 		error: function(http) {
-			var msg = $(http.responseText).find('h1').first().html();ChangeCodeImg()
+			var msg = $(http.responseText).find('h1').first().html();//ChangeCodeImg()
 			$('#txtTel').val(genPhoneNum());
 			if(console) console.warn(msg);
 	  	}
@@ -59,9 +59,9 @@ function genPhoneNum(){
  * 所有数据依旧采自页面提交
  */
 function bind(){
-	ChangeCodeImg();
+	//ChangeCodeImg();
 	// 屏蔽onfocus事件
-	$('#txtSafetyCode').attr('onfocus','');
+	$('#txtSafetyCode').attr('onfocus','').hide();
 	$('#txtTel').val(genPhoneNum());
 	$("form").on("submit", function(e) {
   		e.preventDefault();
