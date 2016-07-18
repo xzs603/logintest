@@ -27,7 +27,7 @@ function ajaxSubmit(){
 		"GetUsers[]":$("input:checked").val(),
 		url:url,txtusrName:txtusrName,txtTel:txtTel,txtsfzh:txtsfzh,txtSafetyCode:txtSafetyCode,btnSubmit:'提 交 选 票'
 	};
-	$.ajax({
+	$.post({
 		url:url,
 		data:data,
 		success:function(rsp){
