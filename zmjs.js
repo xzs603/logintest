@@ -28,7 +28,7 @@ function ajaxSubmit(){
 		url:url,txtusrName:txtusrName,txtTel:txtTel,txtsfzh:txtsfzh,txtSafetyCode:txtSafetyCode,btnSubmit:'提 交 选 票'
 	};
 	$.ajax({
-		url:url,
+		type:'POST',
 		data:data,
 		success:function(rsp){
 			var msg = $(rsp).find('h1').first().html();//ChangeCodeImg()
